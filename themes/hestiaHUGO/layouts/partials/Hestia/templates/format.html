@@ -1,0 +1,68 @@
+{{- /*
+Copyright 2022 "Holloway" Chew, Kean Ho <kean.ho.chew@zoralab.com>
+Copyright 2022 ZORALab Enterprise <tech@zoralab.com>
+
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at
+
+                 http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+*/ -}}
+{{- /* INPUT PARAMETERS */ -}}
+{{- /* . = Page data in Hestia Structure */ -}}
+
+
+
+
+<!DOCTYPE html>
+<html lang="{{- .Languages.Current.Code -}}">
+<head>
+	{{- partial "Hestia/functions/render/html/meta/vendors/google/Analytics4.html" . }}
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	{{- partial "Hestia/functions/render/html/meta/Redirect" . -}}
+	{{- partial "Hestia/functions/render/html/meta/Title" . -}}
+	{{- partial "Hestia/functions/render/html/meta/Favicons" . -}}
+	{{- partial "Hestia/functions/render/html/meta/Robots" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/twitter/Card" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/open-graph/Title" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/twitter/Title" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/open-graph/Site-Name" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/twitter/Site" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/twitter/Creator" . -}}
+	{{- partial "Hestia/functions/render/html/meta/Keywords" . -}}
+	{{- partial "Hestia/functions/render/html/meta/Formats" . -}}
+	{{- partial "Hestia/functions/render/html/meta/Alternate-Languages" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/open-graph/Locale" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/open-graph/Locale-Alternate" . -}}
+	{{- partial "Hestia/functions/render/html/meta/Description" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/open-graph/Description" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/twitter/Description" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/open-graph/Thumbnails" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/twitter/Image" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/twitter/Media" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/twitter/Stores" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/open-graph/URL" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/microsoft/XMLBrowserConfig" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/gohugo/Generator" . -}}
+	{{- partial "Hestia/functions/render/html/meta/vendors/zoralab/Hestia" . -}}
+	{{- partial "Hestia/functions/render/html/meta/LDJSON" . -}}
+	{{- partial "Hestia/functions/render/html/meta/CSS/Init" . -}}
+	{{- partial "Hestia/functions/render/html/meta/Manifest" . -}}
+	{{- partial "Hestia/functions/render/html/meta/ServiceWorker" . -}}
+	{{- partial "Hestia/functions/render/html/meta/JS/Init" . -}}
+	{{- partial "Hestia/functions/render/html/meta/WASM/Init" . -}}
+	{{- /* Prevent new line clean up */}}
+</head>
+<body>
+	{{- partial "Hestia/functions/render/html/content/Init" . -}}
+	{{- partial "Hestia/functions/render/html/debug/Init" . -}}
+	{{- /* Prevent new line clean up */}}
+</body>
+</html>

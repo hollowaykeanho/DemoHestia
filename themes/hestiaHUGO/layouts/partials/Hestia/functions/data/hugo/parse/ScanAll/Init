@@ -1,0 +1,108 @@
+{{- /*
+Copyright 2022 "Holloway" Chew, Kean Ho <kean.ho.chew@zoralab.com>
+Copyright 2022 ZORALab Enterprise <tech@zoralab.com>
+
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at
+
+                 http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+*/ -}}
+{{- /* INPUT PARAMETERS */ -}}
+{{- /* . = Hugo data structure */ -}}
+
+{{- /* CONTANTS */ -}}
+{{- $CACHE_LABEL := "Cached-NavALL" -}}
+{{- $CACHE_FILENAME := "__caches.toml" -}}
+
+
+
+
+{{- /* prepare working variables for this function */ -}}
+{{- $dataList := dict -}}
+{{- $nav := slice -}}
+{{- $pwa := dict -}}
+{{- $ret := false -}}
+{{- $path := false -}}
+{{- $Local := dict -}}
+
+
+
+
+{{- /* process data alongside secure manual caching so that:
+	1) only root page or 1st rendering page can refresh the values
+	2) speeds up all pages rendering so that every page does not need to
+	   scan all pages all the time.
+*/ -}}
+{{- if .IsHome -}}
+	{{- /* begin scanning all pages */ -}}
+	{{- $nav = slice -}}
+	{{- $pwa = dict -}}
+	{{- range $i, $v := .Site.Pages -}}
+		{{- /* skip __content.* data page mistreatment */ -}}
+		{{- if strings.Contains $v.Permalink "__content" -}}
+			{{- continue -}}
+		{{- end -}}
+
+		{{- /* parse basic metadata */ -}}
+		{{- $ret = partial "Hestia/functions/data/Metadata" $v -}}
+
+		{{- /* append to list */ -}}
+		{{- $nav = append $ret $nav -}}
+
+
+
+
+		{{- /* parse PWA.Caches */ -}}
+		{{- $Local = dict -}}
+		{{- $path = "" -}}
+		{{- if $v.Page.File -}}
+			{{- $path = path.Dir $v.Page.File.Path -}}
+			{{- $Local = path.Join $path $CACHE_FILENAME -}}
+			{{- $Local = path.Clean $Local -}}
+			{{- $Local = partial "Hestia/functions/data/hugo/parse/__dataFile"
+				$Local -}}
+		{{- end -}}
+
+
+		{{- if $Local -}}
+			{{- range $j, $w := $Local.Contents -}}
+				{{- if not (index $w "URL") -}}
+					{{- continue -}}
+				{{- end -}}
+
+				{{- if not (index $w "Cache") -}}
+					{{- continue -}}
+				{{- end -}}
+
+				{{- $ret = urls.Parse $w.URL -}}
+				{{- if $ret.Scheme -}}
+					{{- /* DO NOTHING - absolute URL */ -}}
+					{{- $ret = $w.URL -}}
+				{{- else if (hasPrefix $ret.Path "/") -}}
+					{{- /* DO NOTHING - absolute URL */ -}}
+					{{- $ret = $w.URL -}}
+				{{- else -}}
+					{{- $ret = path.Join "/" $path $w.URL -}}
+				{{- end -}}
+				{{- $ret = lower $ret -}}
+
+				{{- $pwa = merge $pwa (dict $ret $w.Cache) -}}
+			{{- end -}}
+		{{- end -}}
+	{{- end -}}
+{{- end -}}
+
+{{ $dataList = dict "Nav" (dict "All" $nav) "PWA" (dict "Caches" $pwa) -}}
+
+
+
+
+{{- /* render output */ -}}
+{{- return $dataList -}}

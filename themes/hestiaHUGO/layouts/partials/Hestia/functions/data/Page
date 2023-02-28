@@ -1,0 +1,119 @@
+{{- /*
+Copyright 2022 "Holloway" Chew, Kean Ho <kean.ho.chew@zoralab.com>
+Copyright 2022 ZORALab Enterprise <tech@zoralab.com>
+
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+this file except in compliance with the License. You may obtain a copy of the
+License at
+
+                 http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed
+under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+*/ -}}
+{{- /* INPUT PARAMETERS */ -}}
+{{- /* . = hugo data structure */ -}}
+
+
+
+
+{{- /* prepare working variables for this function */ -}}
+{{- $dataList := dict "IsHestia" true -}}
+{{- $ret := false -}}
+
+
+
+
+{{- /*
+	prepare Hestia .Page.URL
+
+	NOTE:
+	1) Position matters.
+	2) First 7 fragments **MUST** be as it is. They are too critical to
+	   fail.
+*/ -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/URL" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Time" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Formats" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Filesystems" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Languages" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Datastore" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/IsServerMode" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Is404" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/IsRoot" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Thumbnails" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Title" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Descriptions" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Keywords" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Content" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Creators" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Components" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/CSS" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/JS" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Robots" .) -}}
+{{- $dataList = merge $dataList (partialCached "Hestia/functions/data/hugo/parse/RobotsTXT/Init" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/PWA/Init" $dataList) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Redirect" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/WASM" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Vendors/Init" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Data" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/ScanChildren/Init" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/ScanAll/Init" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/Sitemap/Init" .) -}}
+{{- $dataList = merge $dataList (partial "Hestia/functions/data/hugo/parse/LDJSON" .) -}}
+
+
+
+
+{{- /* BEGIN LOCALIZING - Hugo interfaces ended beyond this line */ -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/local/Components" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/local/Content" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/local/CSS" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/local/JS" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/local/Page" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/local/Languages" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/local/LDJSON" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/local/Robots" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/local/Thumbnails" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/local/Twitter" $dataList -}}
+
+
+
+
+{{- /* BEGIN PROCESSING - Processing the $dataList to match Hestia's data structure */ -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Time/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Formats/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Languages/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Titles/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Descriptions/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Keywords/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Creators/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Components/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/CSS/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/JS/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Redirect/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/WASM/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/PWA/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Thumbnails/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Vendors/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Sitemap/Init" $dataList -}}
+
+
+
+
+{{- /* BEGIN POST PROCESSING - Hestia data processing ended beyond this line */ -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Robots/Init" $dataList -}}
+{{- $dataList = merge $dataList
+	(partialCached "Hestia/functions/data/hugo/process/RobotsTXT/Init" $dataList) -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Data/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/Content/Init" $dataList -}}
+{{- $dataList = partial "Hestia/functions/data/hugo/process/LDJSON/Init" $dataList -}}
+
+
+
+
+{{- /* render output */ -}}
+{{- return $dataList -}}

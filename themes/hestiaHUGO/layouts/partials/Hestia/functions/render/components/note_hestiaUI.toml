@@ -1,0 +1,44 @@
+[CSS.Variables]
+"--note-box-sizing" = "border-box"
+"--note-margin" = "1.3rem auto"
+"--note-padding" = "0"
+
+"--note-min-width" = "initial"
+"--note-width" = "100%"
+"--note-max-width" = "100%"
+"--note-min-height" = "initial"
+"--note-height" = "max-content"
+"--note-max-height" = "initial"
+
+"--note-border" = "1px solid var(--color-primary-400)"
+"--note-border-radius" = ".5rem"
+"--note-timing" = "var(--timing-normal)"
+
+
+
+
+"--note-title-indicator-margin" = "auto 1.5rem"
+
+"--note-title-font-size" = "2.5rem"
+"--note-title-font-style" = "normal"
+"--note-title-font-weight" = "500"
+"--note-title-text-transform" = "titlecase"
+"--note-title-text-align" = "left"
+
+"--note-title-color" = "var(--body-color-inverted)"
+"--note-title-color-print" = "var(--body-color-print)"
+"--note-title-indicator-color" = "var(--color-contrast-400)"
+"--note-title-indicator-color-print" = "var(--body-color-print)"
+"--note-title-background" = "var(--color-primary-900)"
+"--note-title-background-print" = "var(--body-background-print)"
+
+
+
+
+"--note-content-margin" = "0"
+"--note-content-padding" = "2rem"
+
+"--note-content-color" = "var(--body-color)"
+"--note-content-color-print" = "var(--body-color-print)"
+"--note-content-background" = "var(--color-primary-100)"
+"--note-content-background-print" = "var(--body-background-print)"

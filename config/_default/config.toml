@@ -1,0 +1,43 @@
+baseURL = "https://www.mysite.com"
+canonifyURLs = true
+buildDrafts = false
+buildExpired = false
+buildFuture = false
+theme = [ "hestiaHUGO" ]
+metaDataFormat = "toml"
+paginate = 10
+summaryLength = 70
+sectionPagesMenu = "sections"
+enableEmoji = true
+pluralizeListTitles = false
+enableGitInfo = true
+enableRobotsTXT = true
+hasCJKLanguage = true
+cleanDestinationDir = true
+
+# content pathing
+archetypeDir = "archetypes"
+contentDir = "content"
+assetDir = "assets"
+dataDir = "data"
+staticDir = [
+	"static",
+]
+layoutDir = "layouts"
+themesDir = "themes"
+publishDir = "public"
+i18nDir = "i18n"
+
+
+# Hugo injected generator as first line and broke HTML spec. Therefore, Hestia
+# disables it and inject later using its renderer.
+disableHugoGeneratorInject = true
+
+
+# AMP disallowed javascript loading. Also, Hugo injects it as second line and
+# broke its HTML spec. Therefore, Hestia disables it.
+disableLiveReload = true
+
+
+# Disables the following as Hestia is taking over.
+disableKinds = [ 'sitemap', '404', 'RSS', 'term', 'taxonomy', 'robotsTXT' ]

@@ -1,0 +1,101 @@
+# HESTIA LANGUAGES CONFIGURATIONS
+# ===============================
+# Due to the support for WASM, there is a tendency that the i18n can be
+# implemented in WASM domain completely and discarding Hugo multilingual
+# feature. Hence, Hestia has to supply its own i18n feature and no longer
+# depends on Hugo's multilingual feature for said flexibility and keeping the
+# Hugo module development and communications consistent.
+#
+#
+# CODE FIELD
+# This i18n multiple languages settings were designed to comply with:
+#   1. ISO639 (https://www.iso.org/iso-639-language-codes.html)
+#   2. Searchable ISO639 (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)
+#   3. ISO15924 (https://www.iso.org/standard/81905.html)
+#   4. Searchable ISO15924 (https://en.wikipedia.org/wiki/ISO_159240)
+#   5. ISO3166 (https://www.iso.org/iso-3166-country-codes.html)
+#   6. Searchable ISO3166 (https://www.iso.org/obp/ui/#search)
+# To comply all the standards above, the .Code field shall be in this pattern:
+#                        {[lang]}{-[Script]}{-[COUNTRY]}
+# Where:
+#    1. [lang] is the ISO639 lowercase value;
+#    2. [Script] is the ISO15924 compliant titlecase value;
+#    3. [COUNTRY] is the ISO3166 compliant UPPERCASE value.
+# It is optional to provide [Script] and [COUNTRY] fields. Should any of them
+# be absent, their corresponding dash before them can be removed. Example:
+#     English (International)             = 'en'
+#     English (United States)             = 'en-US'
+#     English (China)                     = 'en-CN'
+#     English (Malaysia)                  = 'en-MY'
+#     Chinese (International)             = 'zh'
+#     Chinese (United States)             = 'zh-US'
+#     Chinese (China)                     = 'zh-CN'
+#     Chinese (Malaysia)                  = 'zh-MY'
+#     Simplified Chinese (International)  = 'zh-Hans'
+#     Simplified Chinese (United States)  = 'zh-Hans-US'
+#     Simplified Chinese (China)          = 'zh-Hans-CN'
+#     Simplified Chinese (Malaysia)       = 'zh-Hans-MY'
+#     Traditional Chinese (International) = 'zh-Hant'
+#     Traditional Chinese (United States) = 'zh-Hant-US'
+#     Traditional Chinese (China)         = 'zh-Hant-CN'
+#     Traditional Chinese (Malaysia)      = 'zh-Hant-MY'
+#
+#
+# NAME FIELD
+# The full name of the language in the targeted language. This is used for
+# displaying translation options (e.g. a translator selector box to redirect
+# user).
+#
+#
+# DIRECTORY FIELD
+# The relative directory pathing for the selected language inside Hugo's 'docs/'
+# directory. Hestia learns this and setup necessary utilities (e.g. sitemap,
+# 404 language redirect, etc).
+#
+#
+# DIRECTION FIELD
+# The direction of the text field. Value is EITHER 'left-to-right' OR
+# 'right-to-left' ONLY depending on the language. Default is 'left-to-right'.
+#
+#
+# DEFAULT FIELD
+# Denotes the default language. ONLY ONE (1) of all can be set to true.
+#
+#
+# URL.ERROR_404 FIELD
+# The Hestia compatible 404 page URL for that specific language.
+#
+#
+# The data structure pattern for a language is as follows:
+#                [{[code]}{-[Script]}{-[COUNTRY]}]
+#                Name        = "[NAME]"
+#                Directory   = "[DIRECTORY]"
+#                Direction   = "[DIRECTION]"
+#
+#                [{[code]}{-[Script]}{-[COUNTRY]}.URL]
+#                ERROR_404     = "[URL.ERROR_404]"
+#                ERROR_Offline = "[URL.ERROR_Offline]"
+# By default, Hestia supplies international English and Simplified Chinese. You
+# can add|modify|remove them according to your site content and design.
+#
+# When in doubt, keep the international English for longer live URL.
+[en]
+Name = "English (International)"
+Directory = "en"
+Direction = "left-to-right"
+Default = true
+
+[en.URL]
+ERROR_404 = "/en/404"
+
+
+
+
+[zh-Hans]
+Name = "简体中文（国际）"
+Directory = "zh-hans"
+Direction = "left-to-right"
+Default = false
+
+[zh-Hans.URL]
+ERROR_404 = "/zh-hans/404"

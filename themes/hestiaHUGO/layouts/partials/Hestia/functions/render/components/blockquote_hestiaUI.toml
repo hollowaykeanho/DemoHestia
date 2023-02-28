@@ -1,0 +1,30 @@
+[CSS.Variables]
+"--blockquote-display" = "block"
+"--blockquote-before-content" = "\"❝\""
+
+"--blockquote-margin" = "0 0 3rem"
+"--blockquote-padding" = "4rem 3rem 3rem 10rem"
+
+"--blockquote-min-width" = "initial"
+"--blockquote-width" = "initial"
+"--blockquote-max-width" = "initial"
+"--blockquote-min-height" = "initial"
+"--blockquote-height" = "initial"
+"--blockquote-max-height" = "initial"
+
+"--blockquote-text-align" = "justify"
+
+"--blockquote-border" = "0"
+"--blockquote-border-radius" = "1rem"
+
+"--blockquote-color" = "var(--color-typography-900)"
+"--blockquote-color-print" = "var(--body-color-print)"
+"--blockquote-background" = "var(--color-primary-100)"
+"--blockquote-background-print" = "var(--body-background-print)"
+
+"--blockquote-timing" = "var(--timing-rapid)"
+
+
+
+"--blockquote-cite-margin" = "2rem 0 0"
+"--blockquote-cite-border-top" = "2px solid var(--blockquote-color)"
