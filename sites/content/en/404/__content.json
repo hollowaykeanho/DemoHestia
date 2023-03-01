@@ -1,0 +1,4 @@
+{
+	"Titles": "{{- .Titles.Page -}}",
+	"Description": "{{- .Descriptions.Page.Pitch -}}"
+}
