@@ -22,6 +22,7 @@ assetDir = "assets"
 dataDir = "data"
 staticDir = [
 	"static",
+	"themes/hestiaHUGO/fonts/hestiaUI_font-NotoSans",
 ]
 layoutDir = "layouts"
 themesDir = "themes"
