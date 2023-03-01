@@ -1,0 +1,15 @@
+<main style='
+	background: url({{- absoluteURL "html" "floating-island.svg" -}})
+		#000012
+		no-repeat center center;
+	background-size: cover;
+'>
+	<section class='banner' id='introduction'>
+		<h1 style='text-align: center;'>{{- .Titles.Page -}}</h1>
+		<p style='text-align: center;'>
+			{{- .Descriptions.Page.Pitch }} {{ .Description.Page.Summary -}}
+		</p>
+		<br/>
+		<a class='button' href='{{- .URL.Base -}}'>Head Back</a>
+	</section>
+</main>

@@ -1,0 +1,23 @@
+main {
+	height: 100vh;
+	width: 100vw;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.banner {
+	width: 50%;
+	max-height: fit-content;
+
+	padding: 5rem;
+	border-radius: 2rem;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background: rgba(255, 255, 255, .75);
+}
